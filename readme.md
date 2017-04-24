@@ -1,7 +1,7 @@
 ## Demo Preview
 ![](https://raw.githubusercontent.com/lsxiao/TabSwichHelper/master/demo.gif?raw=true)
 
-## Useage
+## Usage
 ```java
 TabSwitchHelper tabSwitchHelper = new TabSwitchHelper();
 tabSwitchHelper.init(this, R.id.rb_1, R.id.rb_2, R.id.rb_3, R.id.rb_4);
