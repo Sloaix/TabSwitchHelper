@@ -1,4 +1,4 @@
-package com.bangbangarmy.demo;
+package com.bangbangarmy.util;
 
 import android.app.Activity;
 import android.support.annotation.IdRes;
