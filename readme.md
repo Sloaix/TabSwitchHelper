@@ -21,3 +21,6 @@ tabSwitchHelper.setListener(new TabSwitchHelper.OnTabStateChangedListener() {
     }
 });
 ```
+
+### License
+MIT
