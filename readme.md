@@ -1,5 +1,5 @@
 ## Demo Preview
-![](https://raw.githubusercontent.com/lsxiao/TabSwichHelper/master/demo.gif?raw=true)
+![](https://raw.githubusercontent.com/BangBangArmy/TabSwitchHelper/master/demo.gif?raw=true)
 
 ## Usage
 ```java
