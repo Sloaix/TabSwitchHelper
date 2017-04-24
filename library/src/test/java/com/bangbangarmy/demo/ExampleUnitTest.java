@@ -1,4 +1,4 @@
-package com.bangbangarmy.util;
+package com.bangbangarmy.demo;
 
 import org.junit.Test;
 
