@@ -97,8 +97,16 @@ public class TabSwitchHelper {
         }
     }
 
+    private boolean isAdded(CompoundButton button) {
+        return button != null && mButtons.get(button.getId()) != null;
+    }
+
+    private boolean isAdded(int id) {
+        return mButtons.get(id) != null;
+    }
+
     public void add(final CompoundButton button) {
-        if (button == null || mButtons.get(button.getId()) != null) {
+        if (!isAdded(button)) {
             return;
         }
         final int id = button.getId();
@@ -139,10 +147,9 @@ public class TabSwitchHelper {
     }
 
     public void remove(@IdRes int id) {
-        if (mButtons.get(id) == null) {
+        if (!isAdded(id)) {
             return;
         }
-
         CompoundButton button = mButtons.get(id);
         button.setOnCheckedChangeListener(null);
         button.setOnTouchListener(null);
@@ -157,7 +164,7 @@ public class TabSwitchHelper {
     }
 
     public void checked(@IdRes int id) {
-        if (mButtons.get(id) == null) {
+        if (!isAdded(id)) {
             return;
         }
         if (mCheckedId != -1) {
