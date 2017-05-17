@@ -106,7 +106,7 @@ public class TabSwitchHelper {
     }
 
     public void add(final CompoundButton button) {
-        if (!isAdded(button)) {
+        if (isAdded(button)) {
             return;
         }
         final int id = button.getId();
