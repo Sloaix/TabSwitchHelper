@@ -105,6 +105,7 @@ public class TabSwitchHelper {
         return mButtons.get(id) != null;
     }
 
+
     public void add(final CompoundButton button) {
         if (isAdded(button)) {
             return;
@@ -172,6 +173,11 @@ public class TabSwitchHelper {
         }
         mButtons.get(id).setChecked(true);
         setCheckedId(id);
+    }
+
+    public void checkedFirst() {
+        int key = mButtons.keyAt(0);
+        checked(key);
     }
 
     public void checked(CompoundButton compoundButton) {

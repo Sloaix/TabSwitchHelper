@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         tabSwitchHelper.add(this, R.id.rb_2);
         tabSwitchHelper.add(this, R.id.rb_3);
         tabSwitchHelper.add(this, R.id.rb_4);
-        tabSwitchHelper.checked(R.id.rb_1);
+        tabSwitchHelper.checkedFirst();
         tabSwitchHelper.setListener(new TabSwitchHelper.OnTabStateChangedListener() {
             @Override
             public void afterTabStateChanged(CompoundButton button, boolean isChecked) {
