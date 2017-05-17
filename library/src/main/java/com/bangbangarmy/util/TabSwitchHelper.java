@@ -209,7 +209,7 @@ public class TabSwitchHelper {
         boolean beforeTabStateChanged(CompoundButton button, boolean isChecked);
     }
 
-    public class SimpleStateChangedListener implements OnTabStateChangedListener {
+    public static class SimpleStateChangedListener implements OnTabStateChangedListener {
         @Override
         public void afterTabStateChanged(CompoundButton button, boolean isChecked) {
 
