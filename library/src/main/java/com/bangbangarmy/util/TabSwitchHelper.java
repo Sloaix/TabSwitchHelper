@@ -60,6 +60,10 @@ public class TabSwitchHelper {
         }
     }
 
+    public boolean hasTabs() {
+        return mButtons.size() != 0;
+    }
+
     public void add(Activity activity, @IdRes int... ids) {
         View view = activity.findViewById(android.R.id.content);
         add(view, ids);
