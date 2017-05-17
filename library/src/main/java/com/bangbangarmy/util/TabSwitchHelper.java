@@ -167,6 +167,21 @@ public class TabSwitchHelper {
         setCheckedId(id);
     }
 
+    public void checked(CompoundButton compoundButton) {
+        checked(compoundButton.getId());
+    }
+
+    public CompoundButton getChecked() {
+        for (int i = 0; i < mButtons.size(); i++) {
+            int key = mButtons.keyAt(i);
+            CompoundButton button = mButtons.get(key);
+            if (button.isChecked()) {
+                return button;
+            }
+        }
+        return null;
+    }
+
     private void setCheckedId(@IdRes int checkedId) {
         mCheckedId = checkedId;
     }
@@ -179,5 +194,17 @@ public class TabSwitchHelper {
         void afterTabStateChanged(CompoundButton button, boolean isChecked);
 
         boolean beforeTabStateChanged(CompoundButton button, boolean isChecked);
+    }
+
+    public class SimpleStateChangedListener implements OnTabStateChangedListener {
+        @Override
+        public void afterTabStateChanged(CompoundButton button, boolean isChecked) {
+
+        }
+
+        @Override
+        public boolean beforeTabStateChanged(CompoundButton button, boolean isChecked) {
+            return false;
+        }
     }
 }
