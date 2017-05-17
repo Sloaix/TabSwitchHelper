@@ -15,7 +15,7 @@ allprojects {
 #### Step 2. Add the dependency
 ```grovy
 dependencies {
-    compile 'com.github.BangBangArmy:TabSwitchHelper:0.0.1-alpha'
+    compile 'com.github.BangBangArmy:TabSwitchHelper:0.0.1'
 }
 
 ```
@@ -24,7 +24,9 @@ dependencies {
 ```java
 TabSwitchHelper tabSwitchHelper = new TabSwitchHelper();
 
-tabSwitchHelper.init(this, R.id.rb_1, R.id.rb_2, R.id.rb_3, R.id.rb_4);
+//init method is deprecated
+
+tabSwitchHelper.add(this, R.id.rb_1, R.id.rb_2, R.id.rb_3, R.id.rb_4);
 
 tabSwitchHelper.checked(R.id.rb_1);
 

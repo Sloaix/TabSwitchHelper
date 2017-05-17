@@ -19,22 +19,32 @@ public class TabSwitchHelper {
         mButtons = new SparseArrayCompat<>();
     }
 
+    @Deprecated
     public void init(Activity activity, @IdRes int... ids) {
         View view = activity.findViewById(android.R.id.content);
         init(view, ids);
     }
 
+    @Deprecated
     public void init(Fragment fragment, @IdRes int... ids) {
+        if (fragment.getView() == null) {
+            throw new IllegalArgumentException("fragment.getView() is null");
+        }
         View view = fragment.getView().findViewById(android.R.id.content);
         init(view, ids);
     }
 
+    @Deprecated
     public void init(DialogFragment fragment, @IdRes int... ids) {
+        if (fragment.getView() == null) {
+            throw new IllegalArgumentException("fragment.getView() is null");
+        }
         View view = fragment.getView().findViewById(android.R.id.content);
         init(view, ids);
     }
 
-    public void init(View view, @IdRes int... ids) {
+    @Deprecated
+    private void init(View view, @IdRes int... ids) {
         if (view == null) {
             throw new NullPointerException("the view is null");
         }
@@ -46,12 +56,56 @@ public class TabSwitchHelper {
                 throw new IllegalArgumentException("the view is not of a compoundButton");
             }
             CompoundButton compoundButton = (CompoundButton) view.findViewById(id);
-            add(id, compoundButton);
+            add(compoundButton);
         }
     }
 
-    private void add(@IdRes int id, final CompoundButton button) {
+    public void add(Activity activity, @IdRes int... ids) {
+        View view = activity.findViewById(android.R.id.content);
+        add(view, ids);
+    }
+
+    public void add(Fragment fragment, @IdRes int... ids) {
+        if (fragment.getView() == null) {
+            throw new IllegalArgumentException("fragment.getView() is null");
+        }
+        View view = fragment.getView().findViewById(android.R.id.content);
+        add(view, ids);
+    }
+
+    public void add(DialogFragment fragment, @IdRes int... ids) {
+        if (fragment.getView() == null) {
+            throw new IllegalArgumentException("fragment.getView() is null");
+        }
+        View view = fragment.getView().findViewById(android.R.id.content);
+        add(view, ids);
+    }
+
+    private void add(View view, @IdRes int... ids) {
+        if (view == null) {
+            throw new NullPointerException("the view is null");
+        }
+        for (int id : ids) {
+            if (view.findViewById(id) == null) {
+                throw new IllegalArgumentException("can not find view with id " + id);
+            }
+            if (!(view.findViewById(id) instanceof CompoundButton)) {
+                throw new IllegalArgumentException("the view is not of a compoundButton");
+            }
+            CompoundButton compoundButton = (CompoundButton) view.findViewById(id);
+            add(compoundButton);
+        }
+    }
+
+    public void add(final CompoundButton button) {
+        if (button == null || mButtons.get(button.getId()) != null) {
+            return;
+        }
+        final int id = button.getId();
+
         mButtons.put(id, button);
+
+        //提供打断check事件的功能
         button.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -59,6 +113,7 @@ public class TabSwitchHelper {
                 return event.getAction() == MotionEvent.ACTION_DOWN && mListener != null && mListener.beforeTabStateChanged(compoundButton, compoundButton.isChecked());
             }
         });
+
         button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -81,6 +136,17 @@ public class TabSwitchHelper {
                 }
             }
         });
+    }
+
+    public void remove(@IdRes int id) {
+        if (mButtons.get(id) != null) {
+            return;
+        }
+
+        CompoundButton button = mButtons.get(id);
+        button.setOnCheckedChangeListener(null);
+        button.setOnTouchListener(null);
+        mButtons.remove(id);
     }
 
     public void checked(@IdRes int id) {

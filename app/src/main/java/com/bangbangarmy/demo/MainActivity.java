@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatDelegate;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
+import com.bangbangarmy.util.TabSwitchHelper;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -15,7 +17,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TabSwitchHelper tabSwitchHelper = new TabSwitchHelper();
-        tabSwitchHelper.init(this, R.id.rb_1, R.id.rb_2, R.id.rb_3, R.id.rb_4);
+        tabSwitchHelper.add(this, R.id.rb_1);
+        tabSwitchHelper.add(this, R.id.rb_2);
+        tabSwitchHelper.add(this, R.id.rb_3);
+        tabSwitchHelper.add(this, R.id.rb_4);
         tabSwitchHelper.checked(R.id.rb_1);
         tabSwitchHelper.setListener(new TabSwitchHelper.OnTabStateChangedListener() {
             @Override
