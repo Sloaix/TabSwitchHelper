@@ -139,7 +139,7 @@ public class TabSwitchHelper {
     }
 
     public void remove(@IdRes int id) {
-        if (mButtons.get(id) != null) {
+        if (mButtons.get(id) == null) {
             return;
         }
 
