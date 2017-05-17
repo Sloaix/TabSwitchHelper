@@ -149,6 +149,13 @@ public class TabSwitchHelper {
         mButtons.remove(id);
     }
 
+    public void clear() {
+        for (int i = 0; i < mButtons.size(); i++) {
+            int key = mButtons.keyAt(i);
+            remove(key);
+        }
+    }
+
     public void checked(@IdRes int id) {
         if (mButtons.get(id) == null) {
             return;
