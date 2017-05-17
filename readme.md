@@ -15,7 +15,7 @@ allprojects {
 #### Step 2. Add the dependency
 ```grovy
 dependencies {
-    compile 'com.github.BangBangArmy:TabSwitchHelper:0.0.7'
+    compile 'com.github.BangBangArmy:TabSwitchHelper:0.0.8'
 }
 
 ```
